@@ -223,7 +223,59 @@
             requestAnimationFrame(updateClock);
         }
 
+        function applyRandomTheme() {
+            const themes = [
+                { // Midnight (Default)
+                    bg: ['#1e293b', '#0f172a'],
+                    accent: '#38bdf8',
+                    second: '#ef4444',
+                    text: '#f8fafc'
+                },
+                { // Emerald Forest
+                    bg: ['#064e3b', '#022c22'],
+                    accent: '#34d399',
+                    second: '#fbbf24',
+                    text: '#ecfdf5'
+                },
+                { // Royal Purple
+                    bg: ['#4c1d95', '#2e1065'],
+                    accent: '#a78bfa',
+                    second: '#f472b6',
+                    text: '#f5f3ff'
+                },
+                { // Sunset Ember
+                    bg: ['#7c2d12', '#451a03'],
+                    accent: '#fb923c',
+                    second: '#38bdf8',
+                    text: '#fff7ed'
+                },
+                { // Slate & Silver
+                    bg: ['#334155', '#1e293b'],
+                    accent: '#94a3b8',
+                    second: '#ef4444',
+                    text: '#f8fafc'
+                },
+                { // Deep Oceanic
+                    bg: ['#1e3a8a', '#172554'],
+                    accent: '#60a5fa',
+                    second: '#facc15',
+                    text: '#eff6ff'
+                }
+            ];
+
+            const theme = themes[Math.floor(Math.random() * themes.length)];
+            const root = document.documentElement;
+
+            root.style.setProperty('--bg-color', theme.bg[1]);
+            root.style.setProperty('--accent-color', theme.accent);
+            root.style.setProperty('--second-hand', theme.second);
+            root.style.setProperty('--text-primary', theme.text);
+
+            document.body.style.background = `radial-gradient(circle at center, ${theme.bg[0]} 0%, ${theme.bg[1]} 100%)`;
+        }
+
         // Initialize
+        applyRandomTheme();
         createMarkings();
         updateClock();
 
