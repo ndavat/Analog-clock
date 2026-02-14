@@ -224,6 +224,11 @@
         // Initialize
         createMarkings();
         updateClock();
+
+        // Auto refresh every 5 minutes
+        setTimeout(() => {
+            window.location.reload();
+        }, 5 * 60 * 1000);
     </script>
 </body>
 
